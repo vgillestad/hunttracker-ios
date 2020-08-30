@@ -13,6 +13,7 @@
 		9A30CA8424FAD6AB003A52F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A30CA8324FAD6AB003A52F1 /* Assets.xcassets */; };
 		9A30CA8724FAD6AB003A52F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A30CA8524FAD6AB003A52F1 /* LaunchScreen.storyboard */; };
 		9A30CA9024FADE11003A52F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30CA8F24FADE11003A52F1 /* WebViewController.swift */; };
+		9A30CA9324FC12E2003A52F1 /* NavigatorGeolocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30CA9224FC12E2003A52F1 /* NavigatorGeolocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9A30CA8624FAD6AB003A52F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A30CA8824FAD6AB003A52F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A30CA8F24FADE11003A52F1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		9A30CA9224FC12E2003A52F1 /* NavigatorGeolocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorGeolocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		9A30CA7924FAD6A9003A52F1 /* hunttracker-ios */ = {
 			isa = PBXGroup;
 			children = (
+				9A30CA9124FC12C8003A52F1 /* Utils */,
 				9A30CA8E24FADDCA003A52F1 /* ViewControllers */,
 				9A30CA7A24FAD6A9003A52F1 /* AppDelegate.swift */,
 				9A30CA7C24FAD6A9003A52F1 /* SceneDelegate.swift */,
@@ -73,6 +76,14 @@
 				9A30CA8F24FADE11003A52F1 /* WebViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9A30CA9124FC12C8003A52F1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9A30CA9224FC12E2003A52F1 /* NavigatorGeolocation.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +158,7 @@
 				9A30CA7F24FAD6A9003A52F1 /* ViewController.swift in Sources */,
 				9A30CA7B24FAD6A9003A52F1 /* AppDelegate.swift in Sources */,
 				9A30CA7D24FAD6A9003A52F1 /* SceneDelegate.swift in Sources */,
+				9A30CA9324FC12E2003A52F1 /* NavigatorGeolocation.swift in Sources */,
 				9A30CA9024FADE11003A52F1 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +307,7 @@
 				PRODUCT_NAME = HuntTracker;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +327,7 @@
 				PRODUCT_NAME = HuntTracker;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
