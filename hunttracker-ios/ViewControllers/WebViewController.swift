@@ -22,12 +22,11 @@ class WebViewController : UIViewController {
         view.backgroundColor = UIColor.white
         
         let webViewConfiguration = WKWebViewConfiguration();
+        navigatorGeolocation.setUserContentController(webViewConfiguration: webViewConfiguration);
         webView = WKWebView(frame:.zero , configuration: webViewConfiguration);
         webView.navigationDelegate = self;
-        webView.load(URLRequest(url: URL(string: WebViewController.BASE_URL)!))
-        
-        navigatorGeolocation.setUserContentController(webViewConfiguration: webViewConfiguration);
         navigatorGeolocation.setWebView(webView: webView);
+        webView.load(URLRequest(url: URL(string: WebViewController.BASE_URL)!))
         
         activityView.startAnimating()
         
