@@ -11,7 +11,7 @@ import WebKit
 
 class WebViewController : UIViewController {
     
-    static let BASE_URL = "https://hunttracker.herokuapp.com"
+    var viewModel:WebViewViewModel!
     
     private var webView:WKWebView!
     private let activityView = UIActivityIndicatorView()
@@ -22,11 +22,20 @@ class WebViewController : UIViewController {
         view.backgroundColor = UIColor.white
         
         let webViewConfiguration = WKWebViewConfiguration();
+        let cookie = HTTPCookie(properties: [
+            .domain: ApiConstants.baseUrl.host!,
+            .path: "/",
+            .name: "token",
+            .value: viewModel.token,
+            .secure: "TRUE",
+            .expires: Date().addingTimeInterval(90*86400)
+        ])!
+        webViewConfiguration.websiteDataStore.httpCookieStore.setCookie(cookie)
         navigatorGeolocation.setUserContentController(webViewConfiguration: webViewConfiguration);
         webView = WKWebView(frame:.zero , configuration: webViewConfiguration);
         webView.navigationDelegate = self;
         navigatorGeolocation.setWebView(webView: webView);
-        webView.load(URLRequest(url: URL(string: WebViewController.BASE_URL)!))
+        webView.load(URLRequest(url: URL(string: ApiConstants.baseUrl.absoluteString)!))
         
         activityView.startAnimating()
         
@@ -51,5 +60,16 @@ extension WebViewController : WKNavigationDelegate {
         activityView.stopAnimating()
         
         webView.evaluateJavaScript(navigatorGeolocation.getJavaScripToEvaluate());
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+
+        if let url = navigationAction.request.url?.absoluteString, url.contains("login.html") {
+            decisionHandler(.cancel)
+            viewModel.didRedirectToLogin()
+        }
+        else {
+            decisionHandler(.allow)
+        }
     }
 }
