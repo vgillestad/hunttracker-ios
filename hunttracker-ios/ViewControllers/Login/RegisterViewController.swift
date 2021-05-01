@@ -1,15 +1,16 @@
 //
-//  ViewController.swift
+//  RegisterViewController.swift
 //  hunttracker-ios
 //
-//  Created by Vegard Gillestad on 29/08/2020.
+//  Created by Vegard Gillestad on 14/09/2020.
 //
 
+import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+class RegisterViewController: AlertViewController {
     
-    var viewModel:LoginViewModel!
+    var viewModel:RegisterViewModel!
     
     private let backgroundImage = UIImageView()
     private let emailTextField = TextField()
@@ -45,7 +46,7 @@ class LoginViewController: UIViewController {
         loginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLogin)))
         
         registerButton.setTitle("Register", for: .normal)
-        registerButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapRegister)))
+        
         
         view.addSubview(backgroundImage)
         view.addSubview(emailTextField)
@@ -92,15 +93,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func didTapLogin() {
-        viewModel.didTapLogin(email: emailTextField.text, password: passwordTextField.text)
-    }
-    
-    @objc func didTapRegister() {
-        viewModel.didTapRegister()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -110,14 +103,8 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController : LoginViewDelegate {
+extension RegisterViewController : RegisterViewModelViewDelegate {
     func showIsFetching(_ isFeching: Bool) {
         loginButton.isFecthing = isFeching
-    }
-    
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
 }

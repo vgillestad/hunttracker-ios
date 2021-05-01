@@ -22,6 +22,12 @@
 		9A30CA9024FADE11003A52F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30CA8F24FADE11003A52F1 /* WebViewController.swift */; };
 		9A30CA9324FC12E2003A52F1 /* NavigatorGeolocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30CA9224FC12E2003A52F1 /* NavigatorGeolocation.swift */; };
 		9A30CA952500AA93003A52F1 /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30CA942500AA93003A52F1 /* KeyChainWrapper.swift */; };
+		9A68D219250FE15800F3D6F0 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68D218250FE15800F3D6F0 /* AlertViewController.swift */; };
+		9A68D21B250FE1B300F3D6F0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68D21A250FE1B300F3D6F0 /* RegisterViewController.swift */; };
+		9A68D21D250FE1F300F3D6F0 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68D21C250FE1F300F3D6F0 /* RegisterViewModel.swift */; };
+		9AD60B30250E8E41000D2DE8 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD60B2F250E8E41000D2DE8 /* ResetPasswordViewModel.swift */; };
+		9AD60B32250E8E57000D2DE8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD60B31250E8E57000D2DE8 /* ResetPasswordViewController.swift */; };
+		9AD60B34250F2A99000D2DE8 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD60B33250F2A99000D2DE8 /* LoginNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +48,12 @@
 		9A30CA8F24FADE11003A52F1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9A30CA9224FC12E2003A52F1 /* NavigatorGeolocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorGeolocation.swift; sourceTree = "<group>"; };
 		9A30CA942500AA93003A52F1 /* KeyChainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainWrapper.swift; sourceTree = "<group>"; };
+		9A68D218250FE15800F3D6F0 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		9A68D21A250FE1B300F3D6F0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9A68D21C250FE1F300F3D6F0 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		9AD60B2F250E8E41000D2DE8 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		9AD60B31250E8E57000D2DE8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		9AD60B33250F2A99000D2DE8 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +78,7 @@
 		9A04C5C8250123A900DCD6BC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				9A04C5C9250123C500DCD6BC /* LoginViewModel.swift */,
+				9A68D216250FD76800F3D6F0 /* Login */,
 				9A04C5CB2501242E00DCD6BC /* WebViewViewModel.swift */,
 			);
 			path = ViewModels;
@@ -127,7 +139,8 @@
 		9A30CA8E24FADDCA003A52F1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9A30CA7E24FAD6A9003A52F1 /* LoginViewController.swift */,
+				9A68D217250FE14A00F3D6F0 /* Common */,
+				9A68D215250FD66100F3D6F0 /* Login */,
 				9A30CA8F24FADE11003A52F1 /* WebViewController.swift */,
 			);
 			path = ViewControllers;
@@ -140,6 +153,35 @@
 				9A30CA942500AA93003A52F1 /* KeyChainWrapper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		9A68D215250FD66100F3D6F0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9AD60B33250F2A99000D2DE8 /* LoginNavigationController.swift */,
+				9A30CA7E24FAD6A9003A52F1 /* LoginViewController.swift */,
+				9A68D21A250FE1B300F3D6F0 /* RegisterViewController.swift */,
+				9AD60B31250E8E57000D2DE8 /* ResetPasswordViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9A68D216250FD76800F3D6F0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9A04C5C9250123C500DCD6BC /* LoginViewModel.swift */,
+				9A68D21C250FE1F300F3D6F0 /* RegisterViewModel.swift */,
+				9AD60B2F250E8E41000D2DE8 /* ResetPasswordViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9A68D217250FE14A00F3D6F0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9A68D218250FE15800F3D6F0 /* AlertViewController.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,12 +260,18 @@
 				9A04C5CF25014D8600DCD6BC /* TextField.swift in Sources */,
 				9A30CA7D24FAD6A9003A52F1 /* SceneDelegate.swift in Sources */,
 				9A30CA9324FC12E2003A52F1 /* NavigatorGeolocation.swift in Sources */,
+				9AD60B34250F2A99000D2DE8 /* LoginNavigationController.swift in Sources */,
+				9A68D21D250FE1F300F3D6F0 /* RegisterViewModel.swift in Sources */,
+				9A68D219250FE15800F3D6F0 /* AlertViewController.swift in Sources */,
+				9A68D21B250FE1B300F3D6F0 /* RegisterViewController.swift in Sources */,
 				9A04C5CA250123C500DCD6BC /* LoginViewModel.swift in Sources */,
 				9A30CA9024FADE11003A52F1 /* WebViewController.swift in Sources */,
 				9A30CA952500AA93003A52F1 /* KeyChainWrapper.swift in Sources */,
 				9A04C5C7250121AC00DCD6BC /* AppCoordinator.swift in Sources */,
 				9A04C5D125014D8F00DCD6BC /* Button.swift in Sources */,
+				9AD60B32250E8E57000D2DE8 /* ResetPasswordViewController.swift in Sources */,
 				9A04C5D3250155C200DCD6BC /* ViewConstants.swift in Sources */,
+				9AD60B30250E8E41000D2DE8 /* ResetPasswordViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +415,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "vgillestad.com.hunttracker-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "hunttracker.no.hunttracker-ios";
 				PRODUCT_NAME = HuntTracker;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -387,7 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "vgillestad.com.hunttracker-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "hunttracker.no.hunttracker-ios";
 				PRODUCT_NAME = HuntTracker;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

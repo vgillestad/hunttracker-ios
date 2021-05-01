@@ -11,6 +11,7 @@ import UIKit
 class AppCoordinator {
     
     private let window:UIWindow
+    private weak var loginNavigationController:LoginNavigationController?
     private let keyChain:KeyChainWrapper = KeyChainWrapperImpl()
     
     init(window: UIWindow)
@@ -26,9 +27,12 @@ class AppCoordinator {
     }
     
     private func showLogin() {
+        let vm = LoginViewModel(coordinatorDelegate: self)
         let vc = LoginViewController()
-        vc.viewModel = LoginViewModel(coordinatorDelegate: self)
-        window.rootViewController = vc
+        vc.viewModel = vm
+        let nc = LoginNavigationController(rootViewController: vc)
+        loginNavigationController = nc
+        window.rootViewController = nc
         window.makeKeyAndVisible()
     }
     
@@ -45,6 +49,24 @@ extension AppCoordinator : LoginCoordinatorDelegate {
     func didLogin(token: String) {
         keyChain.setToken(token)
         showWebView()
+    }
+    
+    func didTapResetPassword(email: String?) {
+        let vc = ResetPasswordViewController()
+        vc.viewModel = ResetPasswordViewModel(coordinatorDelegate: self)
+        loginNavigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func didTapRegister(email: String?) {
+        let vc = RegisterViewController()
+        vc.viewModel = RegisterViewModel(coordinatorDelegate: self)
+        loginNavigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension AppCoordinator : ResetPasswordViewModelDelegate, RegisterViewModelDelegate {
+    func didComplete() {
+        loginNavigationController?.popViewController(animated: true)
     }
 }
 

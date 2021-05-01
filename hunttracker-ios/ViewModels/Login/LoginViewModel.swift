@@ -10,6 +10,8 @@ import Combine
 
 protocol LoginCoordinatorDelegate : class {
     func didLogin(token:String)
+    func didTapResetPassword(email:String?)
+    func didTapRegister(email:String?)
 }
 
 protocol LoginViewDelegate : class {
@@ -62,7 +64,7 @@ class LoginViewModel {
         }
     }
     
-    func didTapRegister() {
-        self.viewDelegate?.showAlert(title: "Not available", message: "Unfortunantly this feature us not available in the app yet. Please visit \(ApiConstants.baseUrl.absoluteString) to register.")
+    func didTapRegister(email:String?) {
+        self.coordinatorDelegate?.didTapResetPassword(email: email)
     }
 }
