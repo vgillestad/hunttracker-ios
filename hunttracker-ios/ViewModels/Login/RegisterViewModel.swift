@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol RegisterViewModelDelegate : class {
+protocol RegisterViewModelDelegate : AnyObject {
     func didComplete()
 }
 
-protocol RegisterViewModelViewDelegate : class {
+protocol RegisterViewModelViewDelegate : AnyObject {
     func showIsFetching(_ isFeching:Bool)
     func showAlert(title:String, message:String)
     func showAlert(title:String, message:String, onConfirm:(() -> Void)?)

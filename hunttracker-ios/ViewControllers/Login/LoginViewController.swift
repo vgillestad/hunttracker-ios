@@ -25,6 +25,7 @@ class LoginViewController: AlertViewController {
         viewModel.viewDelegate = self
         
         view.backgroundColor = UIColor.white
+        navigationItem.backButtonTitle = ""
 
         emailTextField.placeholder = "E-Mail"
         emailTextField.keyboardType = .emailAddress
@@ -42,6 +43,7 @@ class LoginViewController: AlertViewController {
         
         backgroundImage.contentMode = .scaleAspectFill
         backgroundImage.image = UIImage(named: "login_background")
+        backgroundImage.clipsToBounds = true
         
         loginButton.setTitle("Login", for: .normal)
         loginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLogin)))
@@ -70,29 +72,29 @@ class LoginViewController: AlertViewController {
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            emailTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: ViewConstants.topToFirstContent),
             emailTextField.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
-            emailTextField.leadingAnchor.constraint(equalTo: loginButton.leadingAnchor),
-            emailTextField.trailingAnchor.constraint(equalTo: loginButton.trailingAnchor),
-            emailTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            emailTextField.leftAnchor.constraint(equalTo: loginButton.leftAnchor),
+            emailTextField.rightAnchor.constraint(equalTo: loginButton.rightAnchor),
             
-            passwordTextField.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
-            passwordTextField.leadingAnchor.constraint(equalTo: loginButton.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: loginButton.trailingAnchor),
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: ViewConstants.formControlSpacing),
+            passwordTextField.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
+            passwordTextField.leftAnchor.constraint(equalTo: loginButton.leftAnchor),
+            passwordTextField.rightAnchor.constraint(equalTo: loginButton.rightAnchor),
             
-            loginButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ViewConstants.formControlSpacing*2),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ViewConstants.formControlSpacing*2),
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: ViewConstants.formControlSpacing*1.5),
+            loginButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
+            loginButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formControlSpacing*2),
+            loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formControlSpacing*2),
             
-            resetPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ViewConstants.formControlSpacing*2),
-            resetPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ViewConstants.formControlSpacing*2),
-            resetPasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 5),
+            resetPasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: ViewConstants.formControlSpacing),
+            resetPasswordButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            resetPasswordButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
             
+            registerButton.topAnchor.constraint(equalTo: resetPasswordButton.bottomAnchor, constant: ViewConstants.formControlSpacing),
             registerButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ViewConstants.formControlSpacing*2),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ViewConstants.formControlSpacing*2),
-            registerButton.topAnchor.constraint(equalTo: resetPasswordButton.bottomAnchor, constant: ViewConstants.formControlSpacing*2),
+            registerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            registerButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
         ])
     }
     
@@ -101,7 +103,7 @@ class LoginViewController: AlertViewController {
     }
     
     @objc func didTapResetPassword(sender: UITapGestureRecognizer) {
-        viewModel.didTapRegister(email: emailTextField.text)
+        viewModel.didTapResetPassword(email: emailTextField.text)
     }
     
     @objc func didTapRegister(sender: UITapGestureRecognizer) {

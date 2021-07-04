@@ -11,4 +11,6 @@ import UIKit
 struct ViewConstants {
     static let formControlHeight:CGFloat = 50
     static let formControlSpacing:CGFloat = 20
+    static let formLeftRightSpacing:CGFloat = 40
+    static let topToFirstContent:CGFloat = 150
 }

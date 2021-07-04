@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol ResetPasswordViewModelDelegate : class {
+protocol ResetPasswordViewModelDelegate : AnyObject {
     func didComplete()
 }
 
-protocol ResetPasswordViewModelViewDelegate : class {
+protocol ResetPasswordViewModelViewDelegate : AnyObject {
     func showIsFetching(_ isFeching:Bool)
     func showAlert(title:String, message:String)
     func showAlert(title:String, message:String, onConfirm:(() -> Void)?)

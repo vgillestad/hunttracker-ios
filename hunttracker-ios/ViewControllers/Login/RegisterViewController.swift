@@ -13,18 +13,22 @@ class RegisterViewController: AlertViewController {
     var viewModel:RegisterViewModel!
     
     private let backgroundImage = UIImageView()
+    private let titleLabel = UILabel()
     private let emailTextField = TextField()
     private let passwordTextField = TextField()
-    private let loginButton = Button()
-    private let registerButton = UIButton()
+    private let registerButton = Button()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel.viewDelegate = self
-        
+        title = "Register new user"
         view.backgroundColor = UIColor.white
 
+        titleLabel.text = "Enter your e-mail address and your wanted password to register a new user."
+        titleLabel.textColor = UIColor.white
+        titleLabel.numberOfLines = 0
+        
         emailTextField.placeholder = "E-Mail"
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocorrectionType = .no
@@ -40,55 +44,51 @@ class RegisterViewController: AlertViewController {
         }
         
         backgroundImage.contentMode = .scaleAspectFill
+        backgroundImage.clipsToBounds = true
         backgroundImage.image = UIImage(named: "login_background")
-        
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLogin)))
         
         registerButton.setTitle("Register", for: .normal)
         
         
         view.addSubview(backgroundImage)
+        view.addSubview(titleLabel)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(loginButton)
         view.addSubview(registerButton)
         
         setContraints()
     }
     
     private func setContraints() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: ViewConstants.topToFirstContent),
+            titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
+        ])
         
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emailTextField.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
-            emailTextField.leadingAnchor.constraint(equalTo: loginButton.leadingAnchor),
-            emailTextField.trailingAnchor.constraint(equalTo: loginButton.trailingAnchor),
-            emailTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100)
+            emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: ViewConstants.formControlSpacing),
+            emailTextField.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
+            emailTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            emailTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing)
         ])
         
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            passwordTextField.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
-            passwordTextField.leadingAnchor.constraint(equalTo: loginButton.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: loginButton.trailingAnchor),
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: ViewConstants.formControlSpacing)
-        ])
-        
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            loginButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ViewConstants.formControlSpacing*2),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ViewConstants.formControlSpacing*2),
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: ViewConstants.formControlSpacing*1.5),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: ViewConstants.formControlSpacing),
+            passwordTextField.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
+            passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing)
         ])
         
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: ViewConstants.formControlSpacing*1.5),
             registerButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ViewConstants.formControlSpacing*2),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ViewConstants.formControlSpacing*2),
-            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: ViewConstants.formControlSpacing),
+            registerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            registerButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
         ])
     }
     
@@ -105,6 +105,6 @@ class RegisterViewController: AlertViewController {
 
 extension RegisterViewController : RegisterViewModelViewDelegate {
     func showIsFetching(_ isFeching: Bool) {
-        loginButton.isFecthing = isFeching
+        registerButton.isFecthing = isFeching
     }
 }

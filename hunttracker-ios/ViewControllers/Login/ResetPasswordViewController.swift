@@ -13,6 +13,7 @@ class ResetPasswordViewController: AlertViewController {
     var viewModel:ResetPasswordViewModel!
     
     private let backgroundImage = UIImageView()
+    private let titleLabel = UILabel()
     private let emailTextField = TextField()
     private let loginButton = Button()
 
@@ -21,7 +22,12 @@ class ResetPasswordViewController: AlertViewController {
         
         viewModel.viewDelegate = self
         
+        title = "Reset password"
         view.backgroundColor = UIColor.white
+        
+        titleLabel.text = "Enter your e-mail address and we will send you a link you can use to reset your password."
+        titleLabel.textColor = UIColor.white
+        titleLabel.numberOfLines = 0
 
         emailTextField.placeholder = "E-Mail"
         emailTextField.keyboardType = .emailAddress
@@ -31,13 +37,15 @@ class ResetPasswordViewController: AlertViewController {
             emailTextField.textContentType = .username
         }
         
-        backgroundImage.image = UIImage(named: "login_background")
         backgroundImage.contentMode = .scaleAspectFill
+        backgroundImage.image = UIImage(named: "login_background")
+        backgroundImage.clipsToBounds = true
         
-        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitle("Send e-mail", for: .normal)
         loginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLogin)))
         
         view.addSubview(backgroundImage)
+        view.addSubview(titleLabel)
         view.addSubview(emailTextField)
         view.addSubview(loginButton)
         
@@ -45,19 +53,27 @@ class ResetPasswordViewController: AlertViewController {
     }
     
     private func setContraints() {
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emailTextField.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
-            emailTextField.leadingAnchor.constraint(equalTo: loginButton.leadingAnchor),
-            emailTextField.trailingAnchor.constraint(equalTo: loginButton.trailingAnchor),
-            emailTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            
-            loginButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ViewConstants.formControlSpacing*2),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ViewConstants.formControlSpacing*2),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: ViewConstants.topToFirstContent),
+            titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
+        ])
+        
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: ViewConstants.formControlSpacing),
+            emailTextField.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
+            emailTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            emailTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
+        ])
+        
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
             loginButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: ViewConstants.formControlSpacing*1.5),
+            loginButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ViewConstants.formLeftRightSpacing),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ViewConstants.formLeftRightSpacing),
         ])
     }
     

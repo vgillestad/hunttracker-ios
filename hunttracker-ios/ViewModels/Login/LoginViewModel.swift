@@ -8,13 +8,13 @@
 import Foundation
 import Combine
 
-protocol LoginCoordinatorDelegate : class {
+protocol LoginCoordinatorDelegate : AnyObject {
     func didLogin(token:String)
     func didTapResetPassword(email:String?)
     func didTapRegister(email:String?)
 }
 
-protocol LoginViewDelegate : class {
+protocol LoginViewDelegate : AnyObject {
     func showIsFetching(_ isFeching:Bool)
     func showAlert(title:String, message:String)
 }
@@ -65,6 +65,10 @@ class LoginViewModel {
     }
     
     func didTapRegister(email:String?) {
+        self.coordinatorDelegate?.didTapRegister(email: email)
+    }
+    
+    func didTapResetPassword(email: String?) {
         self.coordinatorDelegate?.didTapResetPassword(email: email)
     }
 }
