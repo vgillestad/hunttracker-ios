@@ -27,7 +27,7 @@ class LoginViewController: AlertViewController {
         view.backgroundColor = UIColor.white
         navigationItem.backButtonTitle = ""
 
-        emailTextField.placeholder = "E-Mail"
+        emailTextField.placeholder = gettext("email-placeholder")
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocorrectionType = .no
         emailTextField.autocapitalizationType = .none
@@ -35,7 +35,7 @@ class LoginViewController: AlertViewController {
             emailTextField.textContentType = .username
         }
         
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = gettext("password-placeholder")
         passwordTextField.isSecureTextEntry = true
         if #available(iOS 11, *) {
             passwordTextField.textContentType = .password
@@ -45,13 +45,13 @@ class LoginViewController: AlertViewController {
         backgroundImage.image = UIImage(named: "login_background")
         backgroundImage.clipsToBounds = true
         
-        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitle(gettext("login-button"), for: .normal)
         loginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLogin)))
         
-        resetPasswordButton.setTitle("Forgot password?", for: .normal)
+        resetPasswordButton.setTitle(gettext("forgot-password-button"), for: .normal)
         resetPasswordButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapResetPassword)))
         
-        registerButton.setTitle("Register", for: .normal)
+        registerButton.setTitle(gettext("register-button"), for: .normal)
         registerButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapRegister)))
         
         view.addSubview(backgroundImage)

@@ -28,6 +28,8 @@
 		9AD60B30250E8E41000D2DE8 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD60B2F250E8E41000D2DE8 /* ResetPasswordViewModel.swift */; };
 		9AD60B32250E8E57000D2DE8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD60B31250E8E57000D2DE8 /* ResetPasswordViewController.swift */; };
 		9AD60B34250F2A99000D2DE8 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD60B33250F2A99000D2DE8 /* LoginNavigationController.swift */; };
+		9ADDEDBE26B05B8D000835D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9ADDEDC026B05B8D000835D9 /* Localizable.strings */; };
+		9ADDEDC326B05BEA000835D9 /* GetText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDEDC226B05BEA000835D9 /* GetText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,10 @@
 		9AD60B2F250E8E41000D2DE8 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		9AD60B31250E8E57000D2DE8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		9AD60B33250F2A99000D2DE8 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
+		9ADDEDBB26B05AA4000835D9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9ADDEDBF26B05B8D000835D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADDEDC126B05B92000835D9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADDEDC226B05BEA000835D9 /* GetText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 				9A30CA8824FAD6AB003A52F1 /* Info.plist */,
 				9A30CA8524FAD6AB003A52F1 /* LaunchScreen.storyboard */,
 				9A30CA7C24FAD6A9003A52F1 /* SceneDelegate.swift */,
+				9ADDEDC026B05B8D000835D9 /* Localizable.strings */,
 			);
 			path = "hunttracker-ios";
 			sourceTree = "<group>";
@@ -151,6 +158,7 @@
 			children = (
 				9A30CA9224FC12E2003A52F1 /* NavigatorGeolocation.swift */,
 				9A30CA942500AA93003A52F1 /* KeyChainWrapper.swift */,
+				9ADDEDC226B05BEA000835D9 /* GetText.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nb,
 			);
 			mainGroup = 9A30CA6E24FAD6A9003A52F1;
 			productRefGroup = 9A30CA7824FAD6A9003A52F1 /* Products */;
@@ -242,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A30CA8724FAD6AB003A52F1 /* LaunchScreen.storyboard in Resources */,
+				9ADDEDBE26B05B8D000835D9 /* Localizable.strings in Resources */,
 				9A30CA8424FAD6AB003A52F1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +272,7 @@
 				9A30CA9324FC12E2003A52F1 /* NavigatorGeolocation.swift in Sources */,
 				9AD60B34250F2A99000D2DE8 /* LoginNavigationController.swift in Sources */,
 				9A68D21D250FE1F300F3D6F0 /* RegisterViewModel.swift in Sources */,
+				9ADDEDC326B05BEA000835D9 /* GetText.swift in Sources */,
 				9A68D219250FE15800F3D6F0 /* AlertViewController.swift in Sources */,
 				9A68D21B250FE1B300F3D6F0 /* RegisterViewController.swift in Sources */,
 				9A04C5CA250123C500DCD6BC /* LoginViewModel.swift in Sources */,
@@ -282,8 +293,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A30CA8624FAD6AB003A52F1 /* Base */,
+				9ADDEDBB26B05AA4000835D9 /* nb */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9ADDEDC026B05B8D000835D9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ADDEDBF26B05B8D000835D9 /* en */,
+				9ADDEDC126B05B92000835D9 /* nb */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -293,6 +314,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -354,6 +376,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -411,6 +434,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VGYZZSKA6S;
 				INFOPLIST_FILE = "hunttracker-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -431,6 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VGYZZSKA6S;
 				INFOPLIST_FILE = "hunttracker-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

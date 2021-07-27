@@ -22,14 +22,14 @@ class ResetPasswordViewController: AlertViewController {
         
         viewModel.viewDelegate = self
         
-        title = "Reset password"
+        title = gettext("reset-password-title")
         view.backgroundColor = UIColor.white
         
-        titleLabel.text = "Enter your e-mail address and we will send you a link you can use to reset your password."
+        titleLabel.text = gettext("reset-password-text")
         titleLabel.textColor = UIColor.white
         titleLabel.numberOfLines = 0
 
-        emailTextField.placeholder = "E-Mail"
+        emailTextField.placeholder = gettext("email-placeholder")
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocorrectionType = .no
         emailTextField.autocapitalizationType = .none
@@ -41,7 +41,7 @@ class ResetPasswordViewController: AlertViewController {
         backgroundImage.image = UIImage(named: "login_background")
         backgroundImage.clipsToBounds = true
         
-        loginButton.setTitle("Send e-mail", for: .normal)
+        loginButton.setTitle(gettext("send-email-button"), for: .normal)
         loginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLogin)))
         
         view.addSubview(backgroundImage)

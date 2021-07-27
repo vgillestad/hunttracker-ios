@@ -20,4 +20,8 @@ class AlertViewController : UIViewController {
         }))
         present(alert, animated: true, completion: nil)
     }
+    
+    func showUnexpectedErrorAlert() {
+        showAlert(title: gettext("unexpected-error-title"), message: gettext("unexpected-error-message"))
+    }
 }

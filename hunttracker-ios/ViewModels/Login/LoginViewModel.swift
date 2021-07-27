@@ -56,7 +56,7 @@ class LoginViewModel {
                 }
                 else {
                     DispatchQueue.main.async {
-                        self?.viewDelegate?.showAlert(title: "Incorrect", message: "Looks like you entered an incorrect email/password")
+                        self?.viewDelegate?.showAlert(title: gettext("login-incorrect-title"), message: gettext("login-incorrect-message"))
                     }
                 }
             }

@@ -15,6 +15,7 @@ protocol ResetPasswordViewModelViewDelegate : AnyObject {
     func showIsFetching(_ isFeching:Bool)
     func showAlert(title:String, message:String)
     func showAlert(title:String, message:String, onConfirm:(() -> Void)?)
+    func showUnexpectedErrorAlert()
 }
 
 class ResetPasswordViewModel {
@@ -44,18 +45,22 @@ class ResetPasswordViewModel {
             if let httpResponse = response as? HTTPURLResponse{
                 DispatchQueue.main.async {
                     if httpResponse.statusCode == 200 {
-                        self?.viewDelegate?.showAlert(title: "E-Mail sent", message: "We have sent you an email with instructions on how to reset your password. You should receive it within a few seconds. Remember to check your spam folder if you don't get any e-mail") {
+                        self?.viewDelegate?.showAlert(title: gettext("reset-password-email-sent-title"), message: gettext("reset-password-email-sent-message")) {
                             self?.coordinatorDelegate?.didComplete()
                         }
                     }
+                    else if httpResponse.statusCode == 404 {
+                        self?.viewDelegate?.showAlert(title: "reset-password-email-not-found-title", message: "reset-password-email-not-found-message")
+                    }
                     else {
-                        self?.viewDelegate?.showAlert(title: "Unexpected error", message: "We are sorry, but an unexpected error occured.")
+                        self?.viewDelegate?.showUnexpectedErrorAlert()
                     }
                 }
             }
             else {
                 DispatchQueue.main.async {
-                    self?.viewDelegate?.showAlert(title: "Incorrect", message: "Looks like you entered an incorrect email/password")
+                    self?.viewDelegate?.showUnexpectedErrorAlert()
+                    
                 }
             }
         }

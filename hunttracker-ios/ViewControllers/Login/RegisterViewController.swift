@@ -14,22 +14,32 @@ class RegisterViewController: AlertViewController {
     
     private let backgroundImage = UIImageView()
     private let titleLabel = UILabel()
+    private let firstNameTextField = TextField()
+    private let lastNameTextField = TextField()
     private let emailTextField = TextField()
     private let passwordTextField = TextField()
     private let registerButton = Button()
+    
+    private let form = UIStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel.viewDelegate = self
-        title = "Register new user"
+        title = gettext("register-title")
         view.backgroundColor = UIColor.white
 
-        titleLabel.text = "Enter your e-mail address and your wanted password to register a new user."
+        titleLabel.text = gettext("register-text")
         titleLabel.textColor = UIColor.white
         titleLabel.numberOfLines = 0
         
-        emailTextField.placeholder = "E-Mail"
+        form.axis = .vertical
+        form.spacing = ViewConstants.formControlSpacing
+        
+        firstNameTextField.placeholder = gettext("first-name-placeholder")
+        lastNameTextField.placeholder = gettext("last-name-placeholder")
+        
+        emailTextField.placeholder = gettext("email-placeholder")
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocorrectionType = .no
         emailTextField.autocapitalizationType = .none
@@ -37,7 +47,7 @@ class RegisterViewController: AlertViewController {
             emailTextField.textContentType = .username
         }
         
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = gettext("password-placeholder")
         passwordTextField.isSecureTextEntry = true
         if #available(iOS 11, *) {
             passwordTextField.textContentType = .password
@@ -47,14 +57,18 @@ class RegisterViewController: AlertViewController {
         backgroundImage.clipsToBounds = true
         backgroundImage.image = UIImage(named: "login_background")
         
-        registerButton.setTitle("Register", for: .normal)
-        
+        registerButton.setTitle(gettext("register-button"), for: .normal)
+        registerButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapRegister)))
         
         view.addSubview(backgroundImage)
         view.addSubview(titleLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(registerButton)
+        view.addSubview(form)
+        
+        form.addArrangedSubview(firstNameTextField)
+        form.addArrangedSubview(lastNameTextField)
+        form.addArrangedSubview(emailTextField)
+        form.addArrangedSubview(passwordTextField)
+        form.addArrangedSubview(registerButton)
         
         setContraints()
     }
@@ -67,33 +81,27 @@ class RegisterViewController: AlertViewController {
             titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
         ])
         
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        form.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: ViewConstants.formControlSpacing),
-            emailTextField.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            emailTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
-            emailTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing)
+            form.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: ViewConstants.formControlSpacing),
+            form.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
+            form.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing)
         ])
         
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: ViewConstants.formControlSpacing),
-            passwordTextField.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
-            passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing)
-        ])
+        let formViews:[UIView] = [firstNameTextField, lastNameTextField, emailTextField, passwordTextField, registerButton]
+        formViews.forEach{$0.translatesAutoresizingMaskIntoConstraints = false}
+        NSLayoutConstraint.activate(formViews.map{$0.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight)})
         
-        registerButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: ViewConstants.formControlSpacing*1.5),
-            registerButton.heightAnchor.constraint(equalToConstant: ViewConstants.formControlHeight),
-            registerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewConstants.formLeftRightSpacing),
-            registerButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -ViewConstants.formLeftRightSpacing),
-        ])
+        form.setCustomSpacing(ViewConstants.formControlSpacing*1.5, after: passwordTextField)
     }
     
-    @objc func didTapLogin() {
-        
+    @objc func didTapRegister() {
+        viewModel.didTapRegister(
+            firstName: firstNameTextField.text,
+            lastName: lastNameTextField.text,
+            email: emailTextField.text,
+            password: passwordTextField.text
+        )
     }
     
     override func viewDidLayoutSubviews() {

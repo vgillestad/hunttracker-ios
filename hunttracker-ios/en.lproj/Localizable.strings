@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  hunttracker-ios
+
+  Created by Vegard Gillestad on 27/07/2021.
+  
+*/
+
+"email-placeholder" = "Email";
+"password-placeholder" = "Password";
+"first-name-placeholder" = "First name";
+"last-name-placeholder" = "Last name";
+
+"login-button" = "Login";
+"register-button" = "Register";
+"forgot-password-button" = "Forgot password?";
+"send-email-button" = "Send email";
+
+"unexpected-error-title" = "Unexpected error";
+"unexpected-error-message" = "We are sorry, but an unexpected error occured.";
+
+"login-incorrect-title" = "Incorrect";
+"login-incorrect-message" = "Looks like you entered an incorrect email/password";
+
+"register-title" = "Register new user";
+"register-text" = "Enter your name, email address and your wanted password to register a new user.";
+"register-complete-title" = "Registratin complete!";
+"register-complete-message" = "You are now registered and you can login in with the email and password you provided.";
+"register-already-exists-title" = "Already registered?";
+"register-already-exists-message" = "There seems to be a user with this email registered already.";
+
+"reset-password-title" = "Reset password";
+"reset-password-text" = "Enter your email address and we will send you a link you can use to reset your password.";
+"reset-password-email-sent-title" = "EMail sent";
+"reset-password-email-sent-message" = "We have sent you an email with instructions on how to reset your password. You should receive it within a few seconds. Remember to check your spam folder if you don't get any email";
+"reset-password-email-not-found-title" = "Not found";
+"reset-password-email-not-found-message" = "We could not find any user with that email address.";
+

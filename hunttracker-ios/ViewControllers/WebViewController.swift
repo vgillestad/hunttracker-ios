@@ -27,7 +27,6 @@ class WebViewController : UIViewController {
             .path: "/",
             .name: "token",
             .value: viewModel.token,
-            .secure: "TRUE",
             .expires: Date().addingTimeInterval(90*86400)
         ])!
         webViewConfiguration.websiteDataStore.httpCookieStore.setCookie(cookie)

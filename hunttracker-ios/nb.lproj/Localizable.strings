@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  hunttracker-ios
+
+  Created by Vegard Gillestad on 27/07/2021.
+  
+*/
+
+"email-placeholder" = "E-Post";
+"password-placeholder" = "Passord";
+"first-name-placeholder" = "Fornavn";
+"last-name-placeholder" = "Etternavn";
+
+"login-button" = "Login";
+"register-button" = "Registrer";
+"forgot-password-button" = "Glemt passord?";
+"send-email-button" = "Send e-post";
+
+"unexpected-error-title" = "Uventet feil";
+"unexpected-error-message" = "Vi beklager, men en uventet feil oppstod.";
+
+"login-incorrect-title" = "Feil";
+"login-incorrect-message" = "Ser ut til at kombinasjonen e-post/passord ikke stemmer.";
+
+"register-title" = "Registrer ny bruker";
+"register-text" = "Angi navn, e-post og ønsket passord for å registrere en ny bruker.";
+"register-complete-title" = "Registrering ferdig!";
+"register-complete-message" = "Du er nå registert og kan logge inn med e-posten og passordet du oppga.";
+"register-already-exists-title" = "Allerede registert?";
+"register-already-exists-message" = "Det ser ut til å være en bruker registert med denne e-posten allerede.";
+
+"reset-password-title" = "Reset passord";
+"reset-password-text" = "Oppgi e-posten din og vi sender deg en link som du kan bruke til å resette passordet ditt.";
+"reset-password-email-sent-title" = "E-post sent";
+"reset-password-email-sent-message" = "Vi har sendt en e-post med instruksjoner for hvordan du resetter passordet ditt. Du skal motta den innen noen sekunder. Husk å sjekke spam-mappa om du ikke mottar noen e-post.";
+"reset-password-email-not-found-title" = "Ikke funnet";
+"reset-password-email-not-found-message" = "Vi kunne ikke finne noen bruker registert med den e-posten.";
